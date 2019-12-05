@@ -1,5 +1,6 @@
 library(shiny)
 library(bs4Dash)
+source("helpers/helper-ui.R") #Put helper functions here and not at the top of this file
 
 bs4DashPage(
   navbar = bs4DashNavbar(),
