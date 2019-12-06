@@ -33,3 +33,15 @@ Lets just provide this via a quick k-means clustering. (we could even have this 
 The below image is provided to better highlight the column names of the group editor.
 
 ![group editor closeup](Lookbook/Third.PNG)
+
+
+# Installation
+You will need `mongodb` installed on your system. 
+
+Then run the `download_chissl_mongodb` command located in `helpers/data-prep.R`
+
+Create a mongo db by the name of `chissl` and then import the downloaded `chissl.agz` by performing a `mongorestore` or by using studio3T. This command might work `mongorestore --db chissl chissl.agz`
+
+
+## Python Requirements
+`conda install flask matplotlib networkx nltk numpy pandas pymongo scipy scikit-learn umap-learn`
