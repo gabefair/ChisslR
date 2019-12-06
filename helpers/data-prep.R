@@ -8,3 +8,4 @@ download_mnist_data <- function() {
   }
   else {print("mnist_raw.csv already downloaded")}
 } #This function might seem to freze for one or two mins. Give it time
+

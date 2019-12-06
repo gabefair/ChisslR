@@ -18,9 +18,11 @@ bs4DashPage(
   controlbar = bs4DashControlbar(
     skin = "light"
   ),
+  
   footer = bs4DashFooter(),
   title = "Classic theme",
   body = bs4DashBody(
+    plotOutput("view", height=50, click = "plot_click"),
     bs4TabItems(
       bs4TabItem(
         tabName = "classic",
@@ -40,6 +42,7 @@ bs4DashPage(
                       value = 30)
         ), 
         plotOutput("distPlot")
+        
       )
     )
   )
