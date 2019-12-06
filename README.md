@@ -40,6 +40,7 @@ The below image is provided to better highlight the column names of the group ed
 
 # Installation
 You will need `mongodb` installed on your system. 
+`brew install mongodb`
 
 Then run the `download_chissl_mongodb` command located in `helpers/data-prep.R`
 
