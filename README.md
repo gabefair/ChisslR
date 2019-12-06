@@ -35,7 +35,7 @@ The below image is provided to better highlight the column names of the group ed
 ![group editor closeup](Lookbook/Third.PNG)
 
 
-#Installation
+# Installation
 
-#Python Requirements
+## Python Requirements
 `conda install flask matplotlib networkx nltk numpy pandas pymongo scipy scikit-learn umap-learn`
