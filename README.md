@@ -3,7 +3,12 @@ A R port of [pnnl's chissl](https://github.com/pnnl/chissl)
 Paper about [Chissl](https://dl.acm.org/citation.cfm?id=3302280)
 YouTube video about [Chissl](https://youtu.be/VAsFlZGjL5I)
 
-# Lookbook
+# Goal 
+Provide Transduction during model training of unlabled data to improve training of the model. See the left red arrow in the below image.
+
+![Transduction image](Lookbook/Fourth.PNG)
+
+# Reqirements Lookbook
 Here is a description of what we need to do for this project
 
 1st) Load the results of an Mnist Training
