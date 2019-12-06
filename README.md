@@ -28,6 +28,7 @@ Lets just provide this via a quick k-means clustering. (we could even have this 
 
 
 - [ ] 4rd) As seen in the image above when the user clicks on one of the images "9", it creates a second group to label. 
-The column labels of the group editor can be seen better in the below image
+
+The below image is provided to better highlight the column names of the group editor.
 
 ![group editor closeup](Lookbook/Third.PNG)
