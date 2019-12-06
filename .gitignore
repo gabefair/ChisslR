@@ -1,4 +1,8 @@
 desktop.ini
+
+#Large Data Files
+data/mnist_raw.csv
+
 # History files
 .Rhistory
 .Rapp.history
