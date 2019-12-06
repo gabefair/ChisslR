@@ -40,7 +40,7 @@ You will need `mongodb` installed on your system.
 
 Then run the `download_chissl_mongodb` command located in `helpers/data-prep.R`
 
-Create a mongo db by the name of `chissl` and then import the downloaded `chissl.agz` by performing a `mongorestore` or by using studio3T. 
+Create a mongo db by the name of `chissl` and then import the downloaded `chissl.agz` by performing a `mongorestore` or by using studio3T. This command might work `mongorestore --db chissl chissl.agz`
 
 
 ## Python Requirements
