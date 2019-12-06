@@ -2,6 +2,8 @@ desktop.ini
 
 #Large Data Files
 data/mnist_raw.csv
+data/chissl
+chissl.agz
 
 # History files
 .Rhistory
