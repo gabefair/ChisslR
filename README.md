@@ -33,3 +33,9 @@ Lets just provide this via a quick k-means clustering. (we could even have this 
 The below image is provided to better highlight the column names of the group editor.
 
 ![group editor closeup](Lookbook/Third.PNG)
+
+
+#Installation
+
+#Python Requirements
+`conda install flask matplotlib networkx nltk numpy pandas pymongo scipy scikit-learn umap-learn`
