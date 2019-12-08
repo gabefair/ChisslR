@@ -5,7 +5,7 @@ Paper about [Chissl](https://dl.acm.org/citation.cfm?id=3302280)
 
 YouTube video about [Chissl](https://youtu.be/VAsFlZGjL5I)
 
-Dustin's Chissl Powerpoint [](https://github.com/gabefair/Rhissl/raw/master/Lookbook/ACM%20IUI%20CHISSL.pptx)
+Dustin's Chissl [Powerpoint](https://github.com/gabefair/Rhissl/raw/master/Lookbook/ACM%20IUI%20CHISSL.pptx)
 
 
 # Goal 
