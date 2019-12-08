@@ -35,9 +35,10 @@
 #      OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 #      DAMAGE.
 
-import os, json
+import os, json, sys
+#sys.path.insert(0, '') #hack to get python to see local scripts in util folder
 from flask import Flask, jsonify, request
-from .util import chissl_mongo as cm
+from util import chissl_mongo as cm
 
 from functools import lru_cache
 
