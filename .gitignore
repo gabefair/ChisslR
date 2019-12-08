@@ -1,4 +1,5 @@
 desktop.ini
+package-lock.json
 
 #Large Data Files
 data/mnist_raw.csv
