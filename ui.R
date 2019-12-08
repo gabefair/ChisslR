@@ -14,40 +14,40 @@ fluidPage(
         add_rank_list(
           text = "Drag from here into playground",
           labels = list(
-            "plot1" = plotOutput("view1", height=50),
-            "plot2" = plotOutput("view2", height=50)
+            "plot1" = plotOutput("view1", height=50, width = 50),
+            "plot2" = plotOutput("view2", height=50, width = 50)
           ),
           input_id = "rank_list_1"
         ),
         add_rank_list(
           text = "Drag from here into playground",
           labels = list(
-            "plot3" = plotOutput("view3", height=50),
-            "plot4" = plotOutput("view4", height=50)
+            "plot3" = plotOutput("view3", height=50, width = 50),
+            "plot4" = plotOutput("view4", height=50, width = 50)
           ),
           input_id = "rank_list_2"
         ),
         add_rank_list(
           text = "Drag from here into playground",
           labels = list(
-            "plot5" = plotOutput("view5", height=50),
-            "plot6" = plotOutput("view6", height=50)
+            "plot5" = plotOutput("view5", height=50, width = 50),
+            "plot6" = plotOutput("view6", height=50, width = 50)
           ),
           input_id = "rank_list_3"
         ),
         add_rank_list(
           text = "Drag from here into playground",
           labels = list(
-            "plot7" = plotOutput("view7", height=50),
-            "plot8" = plotOutput("view8", height=50)
+            "plot7" = plotOutput("view7", height=50, width = 50),
+            "plot8" = plotOutput("view8", height=50, width = 50)
           ),
           input_id = "rank_list_4"
         ),
         add_rank_list(
           text = "Drag from here into playground",
           labels = list(
-            "plot9" = plotOutput("view9", height=50),
-            "plot10" = plotOutput("view10", height=50)
+            "plot9" = plotOutput("view9", height=50, width = 50),
+            "plot10" = plotOutput("view10", height=50, width = 50)
           ),
           input_id = "rank_list_5"
         )
