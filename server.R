@@ -16,11 +16,43 @@ function(input, output) {
     
   })
   
-  output$view <- renderPlot({
-    m = t(apply(matrix(unlist(train1[2,-1]), nrow=28, byrow=TRUE), 2, rev))
-    par(mfrow=c(1,1),
-        oma = c(0,0,0,0) + 0.1, # bottom, left, top, right
-        mar = c(0,0,0,0) + 0.1)
-    image(m, col=grey.colors(255), axes=FALSE, asp=1)
-  })
+  output$results_1 <-
+    renderPrint(
+      input$rank_list_1 # This matches the input_id of the first rank list
+    )
+  output$results_2 <-
+    renderPrint(
+      input$rank_list_2 # This matches the input_id of the second rank list
+    )
+  output$results_3 <-
+    renderPrint(
+      input$rank_list_3 # Matches the group_name of the bucket list
+    )
+  output$results_4 <-
+    renderPrint(
+      input$rank_list_4 # Matches the group_name of the bucket list
+    )
+  output$results_5 <-
+    renderPrint(
+      input$rank_list_5 # Matches the group_name of the bucket list
+    )
+  output$playground_1 <-
+    renderPrint(
+      input$playground_1 # Matches the group_name of the bucket list
+    )
+  output$playground_2 <-
+    renderPrint(
+      input$playground_2 # Matches the group_name of the bucket list
+    )
+  
+  output$view1 <- renderPlot(get_image(trial1, 1))
+  output$view2 <- renderPlot(get_image(trial1, 2))
+  output$view3 <- renderPlot(get_image(trial1, 3))
+  output$view4 <- renderPlot(get_image(trial1, 4))
+  output$view5 <- renderPlot(get_image(trial1, 5))
+  output$view6 <- renderPlot(get_image(trial1, 6))
+  output$view7 <- renderPlot(get_image(trial1, 7))
+  output$view8 <- renderPlot(get_image(trial1, 8))
+  output$view9 <- renderPlot(get_image(trial1, 9))
+  output$view10 <- renderPlot(get_image(trial1, 10))
 }
