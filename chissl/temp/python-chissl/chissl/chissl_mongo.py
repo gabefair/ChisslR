@@ -209,6 +209,8 @@ class ChisslMongo(object):
 
                 umap = UMAP()
                 base_pipeline = pydoc.locate(application['pipeline'])
+                #print(f'pipeline  printing gabe', end='...', flush=True)
+                print(base_pipeline, end='...', flush=True)
                 pipeline = Pipeline(base_pipeline.steps + [('umap', umap)])\
                     .set_params(**application.get('params', {}))
                 
@@ -223,7 +225,6 @@ class ChisslMongo(object):
 
                 if self.verbose:
                     print('OK')
-
 
                 obj_computed = {
                    'pipeline': Binary(pickle.dumps(pipeline)),
