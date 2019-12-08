@@ -7,4 +7,6 @@ load_data <- function() {
   train1 <- read_csv("data/selected-sample-data.csv")
   
   removeModal()
+  
+  return(train1)
 }

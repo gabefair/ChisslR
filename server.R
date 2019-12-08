@@ -3,7 +3,7 @@ library(bs4Dash)
 source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 function(input, output) {
-  load_data()
+  train1 <- load_data()
   
   output$distPlot <- renderPlot({
     # generate bins based on input$bins from ui.R
