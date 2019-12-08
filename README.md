@@ -49,7 +49,9 @@ Then run the `download_chissl_mongodb` command located in `helpers/data-prep.R`
 
 Create a mongo db by the name of `chissl` and then import the downloaded `chissl.agz` by performing a `mongorestore` or by using studio3T. This command might work `mongorestore --db chissl --gzip --archive=chissl.agz`
 
-Run the backend chissl flask (python) server located in the chissl folder. `python server.py -p 8891 -d -m localhost` or try `python server.py -p 9101 -d -m localhost`
+Run the backend chissl flask (python) server located in the chissl folder. 
+
+`python server.py -p 8891 -d -m localhost` or try `python server.py -p 9101 -d -m localhost`
 
 Check if it is working by going to: http://127.0.0.1:8891/api/applications/
 
