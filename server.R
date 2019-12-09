@@ -102,6 +102,21 @@ function(input, output) {
       theme(plot.title = element_text(hjust = 0.5))
   })
   
+  output$sci_misclassifications <- renderPlot({
+    sci_lda %>%
+      tidy(matrix = "gamma") %>%
+      separate(document, c("newsgroup", "id"), sep = "_") %>%
+      mutate(newsgroup = reorder(newsgroup, gamma * topic)) %>%
+      ggplot(aes(factor(topic), gamma)) +
+      geom_boxplot() +
+      facet_wrap(~ newsgroup) +
+      theme_bw() +
+      labs(x = "Topic",
+           y = "# of messages where this was the highest % topic",
+           title = "Potential misclassification in subtopics") + 
+      theme(plot.title = element_text(hjust = 0.5))
+  })
+  
   observe({ 
     localserver <<- "http://localhost:3000/"
   })
