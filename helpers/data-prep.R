@@ -151,18 +151,10 @@ train_newsgroups_model <- function() {
     print("Wrote feather: data/feathers/newsgroups/word_sci_newsgroups.feather")
     
     # convert into a document-term matrix with document names such as sci.crypt_14147
-    sci_dtm <- word_sci_newsgroups %>%
-      unite(document, newsgroup, id) %>%
-      count(document, word) %>%
-      cast_dtm(document, word, n)
-    # write_feather(sci_dtm, "data/feathers/newsgroups/sci_dtm.feather")
-    # print("Wrote feather: data/feathers/newsgroups/sci_dtm.feather")
+    sci_dtm <- get_sci_dtm(word_sci_newsgroups)
     
     # build topic model
-    sci_lda <- LDA(sci_dtm, k = 4, control = list(seed = 2016))
-    print('got topic model')
-    # write_feather(sci_lda, "data/feathers/newsgroups/sci_lda.feather")
-    # print("Wrote feather: data/feathers/newsgroups/sci_lda.feather")
+    sci_lda <- get_sci_lda(sci_dtm)
     
     # sentiment analysis
     newsgroup_sentiments <- words_by_newsgroup %>%
@@ -193,11 +185,11 @@ train_newsgroups_model <- function() {
     word_sci_newsgroups <- read_feather("data/feathers/newsgroups/word_sci_newsgroups.feather")
     print("Read feather: data/feathers/newsgroups/word_sci_newsgroups.feather")
     
-    # sci_dtm <- read_feather("data/feathers/newsgroups/sci_dtm.feather")
-    # print("Read feather: data/feathers/newsgroups/sci_dtm.feather")
-    # 
-    # sci_lda <- read_feather("data/feathers/newsgroups/sci_lda.feather")
-    # print("Read feather: data/feathers/newsgroups/sci_lda.feather")
+    # convert into a document-term matrix with document names such as sci.crypt_14147
+    sci_dtm <- get_sci_dtm(word_sci_newsgroups)
+    
+    # build topic model
+    sci_lda <- get_sci_lda(sci_dtm)
     
     newsgroup_sentiments <- read_feather("data/feathers/newsgroups/newsgroup_sentiments.feather")
     print("Read feather: data/feathers/newsgroups/newsgroup_sentiments.feather")
@@ -213,14 +205,34 @@ train_newsgroups_model <- function() {
   return(list("raw_text" = raw_text,
               "cleaned_text" = cleaned_text,
               "usenet_words" = usenet_words,
-              "words_by_newsgroup" = words_by_newsgroup,
               "tf_idf" = tf_idf,
               "word_sci_newsgroups" = word_sci_newsgroups,
-              "sci_dtm" = sci_dtm,
               "sci_lda" = sci_lda,
               "newsgroup_sentiments" = newsgroup_sentiments,
               "contributions" = contributions,
               "top_sentiment_words" = top_sentiment_words))
 }
+
+get_sci_dtm <- function(word_sci_newsgroups) {
+  # convert into a document-term matrix with document names such as sci.crypt_14147
+  sci_dtm <- word_sci_newsgroups %>%
+    unite(document, newsgroup, id) %>%
+    count(document, word) %>%
+    cast_dtm(document, word, n)
+  # write_feather(sci_dtm, "data/feathers/newsgroups/sci_dtm.feather")
+  # print("Wrote feather: data/feathers/newsgroups/sci_dtm.feather")
+  return(sci_dtm)
+}
+
+get_sci_lda <- function(sci_dtm){
+  # build topic model
+  sci_lda <- LDA(sci_dtm, k = 4, control = list(seed = 2016))
+  print('got topic model')
+  # write_feather(sci_lda, "data/feathers/newsgroups/sci_lda.feather")
+  # print("Wrote feather: data/feathers/newsgroups/sci_lda.feather")
+  return(sci_lda)
+}
+
+
 
 

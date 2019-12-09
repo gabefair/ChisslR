@@ -9,10 +9,8 @@ function(input, output) {
   raw_text <- all_data$raw_text
   cleaned_text <- all_data$cleaned_text
   usenet_words <- all_data$usenet_words
-  words_by_newsgroup <- all_data$words_by_newsgroup
   tf_idf <- all_data$tf_idf
   word_sci_newsgroups <- all_data$word_sci_newsgroups
-  sci_dtm <- all_data$sci_dtm
   sci_lda <- all_data$sci_lda
   newsgroup_sentiments <- all_data$newsgroup_sentiments
   contributions <- all_data$contributions
