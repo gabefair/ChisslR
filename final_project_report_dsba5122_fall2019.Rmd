@@ -11,6 +11,7 @@ output: html_document
 The 20_newsgroups_app provides functionality to explore the raw data, the sentiments expressed in a selected topic, the topic models for checking the data categories and overlap, and provides the chisslR functionality to train a model dynamically while exploring misclassified data.
 
 We wanted to make this app to address industry needs to look at text data from start to finish to perform data analysis. The app addresses 3 objectives:
+
 1. Helps explore data, visualize baseline classification and displays misclassified samples
 2. Helps dynamically label misclassified samples
 3. Helps improve learning by providing updated labels to model
@@ -27,6 +28,13 @@ We structured the code so as to avoid performing any intensive operations on the
 The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks.
 
 ### 5. User Evaluation
+We hope the app can provide:
+
+1. Functionality - allows users to visualize the 20-newsgroups data and interact with the classifications provided by the system.
+2. Effectiveness - automates the data cleaning and exploration facet of data analysis, and provides effective exploration of misclassified data.
+3. Efficiency - provides re-usability of the cleaned data to perform further exploration.
+4. Usability - makes exploration easier and is intuitive.
+5. Usefulness - is useful for end-to-end data analysis.
 
 
 ### 6. Future work
