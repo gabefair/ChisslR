@@ -1,5 +1,7 @@
 library(shiny)
 library(stringi)
+library (reactR) # devtools::install_github("react-R/reactR")
+library (usethis); library(htmlwidgets) # install.packages(c("usethis", "htmlwidgets"))
 source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 function(input, output) {
