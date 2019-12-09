@@ -10,7 +10,7 @@ load_newsgroups_data <- function(){
   extract_newsgroups_byDate()
   removeModal()
   
-  showModal(modalDialog("Building Model", footer=NULL))
+  showModal(modalDialog("Building/Loading Model", footer=NULL))
   all_data <- train_newsgroups_model()
   removeModal()
   return(all_data)
