@@ -13,7 +13,7 @@ library(tidyverse)
 ```
 
 ```{r}
-training_folder <- "data/20news-bydate-train/"
+training_folder <- "data/20news-bydate/20news-bydate-train/"
 
 # Define a function to read all files from a folder into a data frame
 read_folder <- function(infolder) {

@@ -1,8 +1,6 @@
 library(shiny)
 library(tidyverse)
 library(viridis)
-library(tm)
-library(ggwordcloud)
 
 # currently only works alongside the 20_newsgroups_explore_khyatidemo.Rmd
 
