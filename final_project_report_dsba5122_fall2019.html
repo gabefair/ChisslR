@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Khyati Mahajan" />
+<meta name="author" content="Khyati Mahajan and Gabriel Fair" />
 
 
 <title>Final Project Report #dsba5122</title>
@@ -363,40 +363,42 @@ summary {
 
 
 <h1 class="title toc-ignore">Final Project Report <a href="https://twitter.com/hashtag/dsba5122">#dsba5122</a></h1>
-<h4 class="author">Khyati Mahajan</h4>
+<h4 class="author">Khyati Mahajan and Gabriel Fair</h4>
 <h4 class="date">12/9/2019</h4>
 
 </div>
 
 
-<div id="introduction" class="section level1">
-<h1>1. Introduction</h1>
-<div id="main-objective-end-to-end-data-exploration-and-analysis-app-for-the-20-newsgroups-data" class="section level3">
-<h3>Main objective: End-to-end data exploration and analysis app for the 20-newsgroups data</h3>
+<div id="introduction" class="section level3">
+<h3>1. Introduction</h3>
+<div id="main-objective-end-to-end-data-exploration-and-analysis-app-for-the-20-newsgroups-data" class="section level4">
+<h4>Main objective: End-to-end data exploration and analysis app for the 20-newsgroups data</h4>
 <p>The 20_newsgroups_app provides functionality to explore the raw data, the sentiments expressed in a selected topic, the topic models for checking the data categories and overlap, and provides the chisslR functionality to train a model dynamically while exploring misclassified data.</p>
 <p>We wanted to make this app to address industry needs to look at text data from start to finish to perform data analysis. The app addresses 3 objectives: 1. Helps explore data, visualize baseline classification and displays misclassified samples 2. Helps dynamically label misclassified samples 3. Helps improve learning by providing updated labels to model</p>
 </div>
 </div>
-<div id="data-operation-and-abstraction-design" class="section level1">
-<h1>2. Data operation and abstraction design</h1>
+<div id="data-operation-and-abstraction-design" class="section level3">
+<h3>2. Data operation and abstraction design</h3>
 <p>We used data from <a href="http://qwone.com/~jason/20Newsgroups/" class="uri">http://qwone.com/~jason/20Newsgroups/</a>. We used tidyverse to clean and visualize the data. We followed the <a href="https://www.tidytextmining.com/usenet.html">case study</a> provided by Julia Silge and David Robinson for loading and cleaning the data and performing exploratory analysis. We updated the plots to use the <code>viridis</code> color pallete for better readability, updated themes, and added axis labels and titles.</p>
 </div>
-<div id="interaction-design" class="section level1">
-<h1>3. Interaction design</h1>
+<div id="interaction-design" class="section level3">
+<h3>3. Interaction design</h3>
 <p>The app layout consists of a sidebar that allows selecting options and providing info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.</p>
 </div>
-<div id="algorithmic-design" class="section level1">
-<h1>4. Algorithmic design</h1>
-<p>We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization.</p>
+<div id="algorithmic-design" class="section level3">
+<h3>4. Algorithmic design</h3>
+<p>We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.</p>
+<p>The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks.</p>
 </div>
-<div id="user-evaluation---testing-the-system" class="section level1">
-<h1>5. User Evaluation - testing the system</h1>
+<div id="user-evaluation" class="section level3">
+<h3>5. User Evaluation</h3>
 </div>
-<div id="future-work" class="section level1">
-<h1>6. Future work</h1>
+<div id="future-work" class="section level3">
+<h3>6. Future work</h3>
+<p>We would like to extend the functionality of the app to include support for more datasets, and at least the most famous ones like the fashionMNIST dataset.</p>
 </div>
-<div id="appendix" class="section level1">
-<h1>7. Appendix</h1>
+<div id="appendix" class="section level3">
+<h3>7. Appendix</h3>
 </div>
 
 
