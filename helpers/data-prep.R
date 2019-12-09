@@ -6,6 +6,7 @@ library(viridis)
 library(stringr)
 library(tidytext)
 library(topicmodels)
+library(textdata)
 
 download_mnist_data <- function() {
   if (!file.exists('data/mnist_raw.csv')){
@@ -43,6 +44,8 @@ train_newsgroups_model <- function() {
   print('inside train_model')
   if (!dir.exists("data/feathers/newsgroups")){
     dir.create("data/feathers/newsgroups")
+  }
+  print("NOTICE: AFINN-111 download will need to be approved at the terminal")
     
     raw_text_feather_path <- "data/feathers/newsgroups/raw_text.feather"
     
@@ -71,9 +74,8 @@ train_newsgroups_model <- function() {
       print('finished reading raw_text')
     }
     
-    usenet_words_feather_path <- "data/feathers/newsgroups/usenet_words.feather"
-    
-    if (!file.exists(usenet_words_feather_path)){
+    cleaned_text_feather_path <- "data/feathers/newsgroups/cleaned_text.feather"
+    if (!file.exists(cleaned_text_feather_path)){
       # Cleaning text
       cleaned_text <- raw_text %>%
         group_by(newsgroup, id) %>%
@@ -87,6 +89,17 @@ train_newsgroups_model <- function() {
                !str_detect(text, "^In article <"),
                !id %in% c(9704, 9985))
       
+      write_feather(cleaned_text, cleaned_text_feather_path)
+      
+      print(paste0("Wrote feather: ", cleaned_text_feather_path))
+    }else{
+      cleaned_text <- read_feather(cleaned_text_feather_path)
+      print(paste0("Read feather: ", cleaned_text_feather_path))
+      
+    }
+      
+      usenet_words_feather_path <- "data/feathers/newsgroups/usenet_words.feather"
+      if (!file.exists(usenet_words_feather_path)){
       usenet_words <- cleaned_text %>%
         unnest_tokens(word, text) %>%
         filter(str_detect(word, "[a-z']$"),
@@ -103,7 +116,7 @@ train_newsgroups_model <- function() {
     }
     
     print('Cleaning text done')
-  }
+  
   
   
   if (!file.exists('data/feathers/newsgroups/top_sentiment_words.feather')){
