@@ -1,5 +1,7 @@
 library(shiny)
 library(stringi)
+library (reactR) # devtools::install_github("react-R/reactR")
+library (usethis); library(htmlwidgets) # install.packages(c("usethis", "htmlwidgets"))
 source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 function(input, output) {
@@ -22,7 +24,17 @@ function(input, output) {
   output$view8 <- renderPlot(get_image(pred_list$pred8, index))
   output$view9 <- renderPlot(get_image(pred_list$pred9, index))
   
+  
+  # output$see_this <- renderPlot({
+  #   validate(
+  #     need(input$playground_1 != '', "Waiting for the selection of a prediction class...")
+  #   )
+  # })
+    for (i in input$playground_1) {
+      output$see_this <- renderPlot(get_image(pred_list[i], 2))
+    }
     
+    # get_image(pred_list[input$playground_1], 2)
     # if ("pred0" %in% reactiveValuesToList(input$playground_1)) {
     #   output$see_this <- renderPlot(get_image(pred_list$pred0, 2))
     # }

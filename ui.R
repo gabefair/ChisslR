@@ -1,5 +1,5 @@
 library(shiny)
-library(sortable)
+# library(sortable)
 library(cowplot)
 source("helpers/helper-ui.R") #Put helper functions here and not at the top of this file
 
@@ -72,7 +72,8 @@ fluidPage(
     ),
     column(
       width = 4,
-      plotOutput("see_this", height=50, width = 50)
+      # plotOutput("see_this", height=50, width = 50)
+      verbatimTextOutput("see_this")
     ),
     column(
       tags$b("Confidence plots"),
