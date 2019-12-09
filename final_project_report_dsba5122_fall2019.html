@@ -388,12 +388,12 @@ summary {
 </div>
 <div id="interaction-design" class="section level3">
 <h3>3. Interaction design</h3>
-<p>The app layout consists of a sidebar that allows selecting options and providing info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.</p>
+<p>The app layout consists of a sidebar that provides info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.</p>
 </div>
 <div id="algorithmic-design" class="section level3">
 <h3>4. Algorithmic design</h3>
 <p>We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.</p>
-<p>The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks.</p>
+<p>The app also displays a message while the data is being loaded, extracted and cleaned, making sure the user knows when the app is performing these background tasks. It is saved in the background as <code>feather</code> files, allowing a much faster load of the variables in subsequent runs.</p>
 </div>
 <div id="user-evaluation" class="section level3">
 <h3>5. User Evaluation</h3>
@@ -412,6 +412,7 @@ summary {
 </div>
 <div id="appendix" class="section level3">
 <h3>7. Appendix</h3>
+<p>We wanted to customize the UI for <code>chissl</code> to better fit R and shiny apps. We are still working on this.</p>
 </div>
 
 
