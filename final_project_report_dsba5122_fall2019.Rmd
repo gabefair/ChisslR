@@ -20,12 +20,12 @@ We wanted to make this app to address industry needs to look at text data from s
 We used data from http://qwone.com/~jason/20Newsgroups/. We used tidyverse to clean and visualize the data. We followed the [case study](https://www.tidytextmining.com/usenet.html) provided by Julia Silge and David Robinson for loading and cleaning the data and performing exploratory analysis. We updated the plots to use the `viridis` color pallete for better readability, updated themes, and added axis labels and titles.
 
 ### 3. Interaction design
-The app layout consists of a sidebar that allows selecting options and providing info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.
+The app layout consists of a sidebar that provides info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.
 
 ### 4. Algorithmic design
 We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.
 
-The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks.
+The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks. It is saved in the background as feather files, allowing a much faster load of the variables in subsequent runs.
 
 ### 5. User Evaluation
 We hope the app can provide:
@@ -41,3 +41,5 @@ We hope the app can provide:
 We would like to extend the functionality of the app to include support for more datasets, and at least the most famous ones like the fashionMNIST dataset.
 
 ### 7. Appendix
+
+We wanted to customize the UI for `chissl` to better fit R and shiny apps. We are still working on this.
