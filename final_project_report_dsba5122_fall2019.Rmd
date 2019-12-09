@@ -1,0 +1,45 @@
+---
+title: "Final Project Report [#dsba5122](https://twitter.com/hashtag/dsba5122)"
+author: "Khyati Mahajan and Gabriel Fair"
+date: "12/9/2019"
+output: html_document
+---
+
+### 1. Introduction
+#### Main objective: End-to-end data exploration and analysis app for the 20-newsgroups data
+
+The 20_newsgroups_app provides functionality to explore the raw data, the sentiments expressed in a selected topic, the topic models for checking the data categories and overlap, and provides the chisslR functionality to train a model dynamically while exploring misclassified data.
+
+We wanted to make this app to address industry needs to look at text data from start to finish to perform data analysis. The app addresses 3 objectives:
+
+1. Helps explore data, visualize baseline classification and displays misclassified samples
+2. Helps dynamically label misclassified samples
+3. Helps improve learning by providing updated labels to model
+
+### 2. Data operation and abstraction design
+We used data from http://qwone.com/~jason/20Newsgroups/. We used tidyverse to clean and visualize the data. We followed the [case study](https://www.tidytextmining.com/usenet.html) provided by Julia Silge and David Robinson for loading and cleaning the data and performing exploratory analysis. We updated the plots to use the `viridis` color pallete for better readability, updated themes, and added axis labels and titles.
+
+### 3. Interaction design
+The app layout consists of a sidebar that provides info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.
+
+### 4. Algorithmic design
+We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.
+
+The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks. It is saved in the background as feather files, allowing a much faster load of the variables in subsequent runs.
+
+### 5. User Evaluation
+We hope the app can provide:
+
+1. Functionality - allows users to visualize the 20-newsgroups data and interact with the classifications provided by the system.
+2. Effectiveness - automates the data cleaning and exploration facet of data analysis, and provides effective exploration of misclassified data.
+3. Efficiency - provides re-usability of the cleaned data to perform further exploration.
+4. Usability - makes exploration easier and is intuitive.
+5. Usefulness - is useful for end-to-end data analysis.
+
+
+### 6. Future work
+We would like to extend the functionality of the app to include support for more datasets, and at least the most famous ones like the fashionMNIST dataset.
+
+### 7. Appendix
+
+We wanted to customize the UI for `chissl` to better fit R and shiny apps. We are still working on this.
