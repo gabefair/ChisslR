@@ -2,6 +2,10 @@ library(readr)
 library(dplyr)
 library(tidyverse)
 library(feather)
+library(viridis)
+library(stringr)
+library(tidytext)
+library(topicmodels)
 
 download_mnist_data <- function() {
   if (!file.exists('data/mnist_raw.csv')){
