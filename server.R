@@ -1,11 +1,22 @@
 library(shiny)
-library(stringi)
 #library (reactR) # devtools::install_github("react-R/reactR")
 #library (usethis); library(htmlwidgets) # install.packages(c("usethis", "htmlwidgets"))
 source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 function(input, output) {
-  load_newsgroups_data()
+  
+  all_data <- load_newsgroups_data()
+  raw_text <- all_data$raw_text
+  cleaned_text <- all_data$cleaned_text
+  usenet_words <- all_data$usenet_words
+  words_by_newsgroup <- all_data$words_by_newsgroup
+  tf_idf <- all_data$tf_idf
+  word_sci_newsgroups <- all_data$word_sci_newsgroups
+  sci_dtm <- all_data$sci_dtm
+  sci_lda <- all_data$sci_lda
+  newsgroup_sentiments <- all_data$newsgroup_sentiments
+  contributions <- all_data$contributions
+  top_sentiment_words <- all_data$top_sentiment_words
   
   output$msg_in_each_newsgroup <- renderPlot({
     raw_text %>%
@@ -90,21 +101,6 @@ function(input, output) {
       labs(x = "Top 8 words in topic model",
            y = "Topic model score", 
            title = "Top words in each topic model") + 
-      theme(plot.title = element_text(hjust = 0.5))
-  })
-  
-  output$sci_misclassifications <- renderPlot({
-    sci_lda %>%
-      tidy(matrix = "gamma") %>%
-      separate(document, c("newsgroup", "id"), sep = "_") %>%
-      mutate(newsgroup = reorder(newsgroup, gamma * topic)) %>%
-      ggplot(aes(factor(topic), gamma)) +
-      geom_boxplot() +
-      facet_wrap(~ newsgroup) +
-      labs(x = "Topic",
-           y = "# of messages where this was the highest % topic",
-           title = "Messages and topics in each subgroup") +
-      theme_bw() + 
       theme(plot.title = element_text(hjust = 0.5))
   })
   
