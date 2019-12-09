@@ -6,8 +6,7 @@ train-images-idx3-ubyte.gz
 train-labels-idx1-ubyte.gz
 
 #Large Data Files
-data/mnist_raw.csv
-data/chissl
+data/
 chissl.agz
 
 # History files
