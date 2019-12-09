@@ -25,7 +25,7 @@ The app layout consists of a sidebar that provides info about the app, a mainPan
 ### 4. Algorithmic design
 We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.
 
-The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks. It is saved in the background as feather files, allowing a much faster load of the variables in subsequent runs.
+The app also displays a message while the data is being loaded, extracted and cleaned, making sure the user knows when the app is performing these background tasks. It is saved in the background as `feather` files, allowing a much faster load of the variables in subsequent runs.
 
 ### 5. User Evaluation
 We hope the app can provide:
