@@ -379,16 +379,18 @@ summary {
 </div>
 <div id="data-operation-and-abstraction-design" class="section level1">
 <h1>2. Data operation and abstraction design</h1>
-<p>We used data from <a href="http://qwone.com/~jason/20Newsgroups/" class="uri">http://qwone.com/~jason/20Newsgroups/</a>. We used tidyverse to clean and visualize the data.</p>
+<p>We used data from <a href="http://qwone.com/~jason/20Newsgroups/" class="uri">http://qwone.com/~jason/20Newsgroups/</a>. We used tidyverse to clean and visualize the data. We followed the <a href="https://www.tidytextmining.com/usenet.html">case study</a> provided by Julia Silge and David Robinson for loading and cleaning the data and performing exploratory analysis. We updated the plots to use the <code>viridis</code> color pallete for better readability, updated themes, and added axis labels and titles.</p>
 </div>
 <div id="interaction-design" class="section level1">
 <h1>3. Interaction design</h1>
+<p>The app layout consists of a sidebar that allows selecting options and providing info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.</p>
 </div>
 <div id="algorithmic-design" class="section level1">
 <h1>4. Algorithmic design</h1>
+<p>We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization.</p>
 </div>
-<div id="user-evaluation" class="section level1">
-<h1>5. User Evaluation</h1>
+<div id="user-evaluation---testing-the-system" class="section level1">
+<h1>5. User Evaluation - testing the system</h1>
 </div>
 <div id="future-work" class="section level1">
 <h1>6. Future work</h1>

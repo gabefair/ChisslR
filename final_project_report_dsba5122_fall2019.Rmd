@@ -1,12 +1,12 @@
 ---
 title: "Final Project Report [#dsba5122](https://twitter.com/hashtag/dsba5122)"
-author: "Khyati Mahajan"
+author: "Khyati Mahajan and Gabriel Fair"
 date: "12/9/2019"
 output: html_document
 ---
 
-# 1. Introduction
-### Main objective: End-to-end data exploration and analysis app for the 20-newsgroups data
+### 1. Introduction
+#### Main objective: End-to-end data exploration and analysis app for the 20-newsgroups data
 
 The 20_newsgroups_app provides functionality to explore the raw data, the sentiments expressed in a selected topic, the topic models for checking the data categories and overlap, and provides the chisslR functionality to train a model dynamically while exploring misclassified data.
 
@@ -15,15 +15,21 @@ We wanted to make this app to address industry needs to look at text data from s
 2. Helps dynamically label misclassified samples
 3. Helps improve learning by providing updated labels to model
 
-# 2. Data operation and abstraction design
-We used data from http://qwone.com/~jason/20Newsgroups/. We used tidyverse to clean and visualize the data. 
+### 2. Data operation and abstraction design
+We used data from http://qwone.com/~jason/20Newsgroups/. We used tidyverse to clean and visualize the data. We followed the [case study](https://www.tidytextmining.com/usenet.html) provided by Julia Silge and David Robinson for loading and cleaning the data and performing exploratory analysis. We updated the plots to use the `viridis` color pallete for better readability, updated themes, and added axis labels and titles.
 
-# 3. Interaction design
+### 3. Interaction design
+The app layout consists of a sidebar that allows selecting options and providing info about the app, a mainPanel that contains tabs for exploratory data analysis (EDA), and a tab for analyzing a selected class. There is another tab that allows epxloration of data that could be misclassified, allowing the user to visualize it and interact with it to provide the correct labels.
 
-# 4. Algorithmic design
+### 4. Algorithmic design
+We structured the code so as to avoid performing any intensive operations on the server of the shiny app. We used a helper code to perform these intensive computations, and cached data wherever possible. Most of the data processing like cleaning and arranging data for exploration happens in this helper code. The server and UI mainly utilize the cached data and plots for data visualization. The first run for the app might take some time, but eventual runs will be faster.
 
-# 5. User Evaluation
+The app also displays a message while the data is being laoded, extracted and cleaned, making sure the user knows when the app is performing these background tasks.
 
-# 6. Future work
+### 5. User Evaluation
 
-# 7. Appendix
+
+### 6. Future work
+We would like to extend the functionality of the app to include support for more datasets, and at least the most famous ones like the fashionMNIST dataset.
+
+### 7. Appendix
