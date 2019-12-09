@@ -11,9 +11,9 @@ load_newsgroups_data <- function(){
   removeModal()
   
   showModal(modalDialog("Building Model", footer=NULL))
-  train_newsgroups_model()
+  all_data <- train_newsgroups_model()
   removeModal()
-  
+  return(all_data)
 }
 
 load_data <- function() {
