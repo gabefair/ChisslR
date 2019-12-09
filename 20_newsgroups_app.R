@@ -17,16 +17,16 @@ ui <- fluidPage(
 
     mainPanel(
       tabsetPanel(
-        type = "pills",
+        type = "tabs",
         tabPanel("EDA",
-          tabsetPanel(type = "tabs",
-            tabPanel("Messages in each group", plotOutput("msg_in_each_newsgroup")),
+          tabsetPanel(type = "pills",
+            tabPanel("Messages in each group", plotOutput("msg_in_each_newsgroup", width = "85%")),
             tabPanel("Sentiment Analysis", plotOutput("sentiment")),
             tabPanel("Sentiments expressed by word", plotOutput("sentiment_by_word"))
           ),
         ),
         tabPanel("Exploring the 'science' groups",
-          tabsetPanel(type = "tabs",
+          tabsetPanel(type = "pills",
             tabPanel("TF-IDF", plotOutput("tfidf_selected")),
             tabPanel("Topic Model", plotOutput("sci_topic_model")),
             tabPanel("Misclassifications", plotOutput("sci_misclassifications"))
@@ -44,10 +44,14 @@ server <- function(input, output) {
       group_by(newsgroup) %>%
       summarize(messages = n_distinct(id)) %>%
       ggplot(aes(reorder(newsgroup, messages), messages)) +
-      geom_col(fill = viridis(1), alpha = 0.4) +
+      geom_col(fill = viridis(1), alpha = 0.6) +
       theme_bw() +
       scale_y_continuous(expand = c(0, 0)) +
-      coord_flip()
+      coord_flip() +
+      labs(x = "Newsgroup", 
+           y = "Messages", 
+           title = "Messages in each newsgroup") + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
   
   output$sentiment <- renderPlot({
@@ -56,9 +60,12 @@ server <- function(input, output) {
       ggplot(aes(newsgroup, value, fill = value > 0)) +
       geom_col(show.legend = FALSE) +
       coord_flip() +
-      ylab("Average sentiment value") +
       theme_minimal() +
-      scale_fill_viridis_d(end = 0.5)
+      scale_fill_viridis_d(end = 0.5) +
+      labs(x = "Newsgroups", 
+           y = "Average sentiment value", 
+           title = "Average sentiment expressed in each newsgroup") + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
   
   output$sentiment_by_word <- renderPlot({
@@ -69,7 +76,11 @@ server <- function(input, output) {
       geom_col(show.legend = FALSE) +
       coord_flip() +
       theme_minimal() +
-      scale_fill_viridis_d(end = 0.5)
+      scale_fill_viridis_d(end = 0.5) +
+      labs(x = "Top 25 words", 
+           y = "Sentiment expressed", 
+           title = "Average sentiment expressed by top 25 words used in the dataset") + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
   
   output$tfidf_selected <- renderPlot({
@@ -86,7 +97,11 @@ server <- function(input, output) {
       scale_y_continuous(expand = c(0, 0)) +
       coord_flip() +
       theme_bw() +
-      scale_fill_viridis_d()
+      scale_fill_viridis_d() +
+      labs(x = "Top 12 words by TF-IDF", 
+           y = "TF-IDF score", 
+           title = "Top words by TF-IDF score") + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
   
   output$sci_topic_model <- renderPlot({
@@ -103,7 +118,11 @@ server <- function(input, output) {
       coord_flip() +
       scale_x_reordered() +
       theme_bw() +
-      scale_fill_viridis_d()
+      scale_fill_viridis_d()  +
+      labs(x = "Top 8 words in topic model",
+           y = "Topic model score", 
+           title = "Top words in each topic model") + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
   
   output$sci_misclassifications <- renderPlot({
@@ -115,8 +134,10 @@ server <- function(input, output) {
       geom_boxplot() +
       facet_wrap(~ newsgroup) +
       labs(x = "Topic",
-           y = "# of messages where this was the highest % topic") +
-      theme_bw()
+           y = "# of messages where this was the highest % topic",
+           title = "Messages and topics in each subgroup") +
+      theme_bw() + 
+      theme(plot.title = element_text(hjust = 0.5))
   })
 }
 
