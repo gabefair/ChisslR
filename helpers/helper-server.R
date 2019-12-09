@@ -1,5 +1,21 @@
 source("helpers/data-prep.R")
 
+
+load_newsgroups_data <- function(){
+  showModal(modalDialog("Downloading dataset", footer=NULL))
+  download_newsgroups_byDate()
+  removeModal()
+  
+  showModal(modalDialog("Extracting dataset", footer=NULL))
+  extract_newsgroups_byDate()
+  removeModal()
+  
+  showModal(modalDialog("Building Model", footer=NULL))
+  train_newsgroups_model()
+  removeModal()
+  
+}
+
 load_data <- function() {
   showModal(modalDialog("Loading dataset", footer=NULL))
   

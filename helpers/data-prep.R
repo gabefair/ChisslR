@@ -32,7 +32,7 @@ extract_newsgroups_byDate <- function() {
   }
 }
 
-train_model <- function() {
+train_newsgroups_model <- function() {
   training_folder <- "data/20news-bydate/20news-bydate-train/"
   
   if (!dir.exists("data/feathers/newsgroups")){

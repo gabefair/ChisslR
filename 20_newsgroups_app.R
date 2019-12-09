@@ -4,6 +4,7 @@ library(viridis)
 library(stringr)
 library(tidytext)
 library(topicmodels)
+source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 # if raw_text is loaded from data, app works
 
@@ -40,72 +41,7 @@ ui <- fluidPage(
 
 # Define server logic for random distribution app ----
 server <- function(input, output) {
-  # Cleaning text
-  cleaned_text <- raw_text %>%
-    group_by(newsgroup, id) %>%
-    filter(cumsum(text == "") > 0,
-           cumsum(str_detect(text, "^--")) == 0) %>%
-    ungroup()
-  cleaned_text <- cleaned_text %>%
-    filter(str_detect(text, "^[^>]+[A-Za-z\\d]") | text == "",
-           !str_detect(text, "writes(:|\\.\\.\\.)$"),
-           !str_detect(text, "^In article <"),
-           !id %in% c(9704, 9985))
-  usenet_words <- cleaned_text %>%
-    unnest_tokens(word, text) %>%
-    filter(str_detect(word, "[a-z']$"),
-           !word %in% stop_words$word)
-  print('Cleaning text done')
-  
-  # Most used words
-  usenet_words %>%
-    count(word, sort = TRUE)
-  
-  # Words by newsgroup
-  words_by_newsgroup <- usenet_words %>%
-    count(newsgroup, word, sort = TRUE) %>%
-    ungroup()
-  
-  # tf-idf
-  tf_idf <- words_by_newsgroup %>%
-    bind_tf_idf(word, newsgroup, n) %>%
-    arrange(desc(tf_idf))
-  print('got tf-idf')
-  
-  # topic modeling include only words that occur at least 50 times
-  word_sci_newsgroups <- usenet_words %>%
-    filter(str_detect(newsgroup, "^sci")) %>%
-    group_by(word) %>%
-    mutate(word_total = n()) %>%
-    ungroup() %>%
-    filter(word_total > 50)
-  
-  # convert into a document-term matrix with document names such as sci.crypt_14147
-  sci_dtm <- word_sci_newsgroups %>%
-    unite(document, newsgroup, id) %>%
-    count(document, word) %>%
-    cast_dtm(document, word, n)
-  
-  # build topic model
-  sci_lda <- LDA(sci_dtm, k = 4, control = list(seed = 2016))
-  print('got topic model')
-  
-  # sentiment analysis
-  newsgroup_sentiments <- words_by_newsgroup %>%
-    inner_join(get_sentiments("afinn"), by = "word") %>%
-    group_by(newsgroup) %>%
-    summarize(value = sum(value * n) / sum(n))
-  
-  contributions <- usenet_words %>%
-    inner_join(get_sentiments("afinn"), by = "word") %>%
-    group_by(word) %>%
-    summarize(occurences = n(),
-              contribution = sum(value))
-  
-  top_sentiment_words <- words_by_newsgroup %>%
-    inner_join(get_sentiments("afinn"), by = "word") %>%
-    mutate(contribution = value * n / sum(n))
-  print('got senitments')
+  load_newsgroups_data()
   
   output$msg_in_each_newsgroup <- renderPlot({
     raw_text %>%
