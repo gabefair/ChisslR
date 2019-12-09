@@ -1,26 +1,51 @@
 library(shiny)
-library(bs4Dash)
+library(stringi)
 source("helpers/helper-server.R") #Put helper functions here and not at the top of this file
 
 function(input, output) {
-  load_data()
+  pred_list <- load_data()
   
-  output$distPlot <- renderPlot({
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-    
-  })
+  output$playground_1 <-
+    renderPrint(
+      input$playground_1 # Matches the group_name of the bucket list
+    )
   
-  output$view <- renderPlot({
-    m = t(apply(matrix(unlist(train1[2,-1]), nrow=28, byrow=TRUE), 2, rev))
-    par(mfrow=c(1,1),
-        oma = c(0,0,0,0) + 0.1, # bottom, left, top, right
-        mar = c(0,0,0,0) + 0.1)
-    image(m, col=grey.colors(255), axes=FALSE, asp=1)
-  })
+  index <- 1
+  output$view0 <- renderPlot(get_image(pred_list$pred0, index))
+  output$view1 <- renderPlot(get_image(pred_list$pred1, index))
+  output$view2 <- renderPlot(get_image(pred_list$pred2, index))
+  output$view3 <- renderPlot(get_image(pred_list$pred3, index))
+  output$view4 <- renderPlot(get_image(pred_list$pred4, index))
+  output$view5 <- renderPlot(get_image(pred_list$pred5, index))
+  output$view6 <- renderPlot(get_image(pred_list$pred6, index))
+  output$view7 <- renderPlot(get_image(pred_list$pred7, index))
+  output$view8 <- renderPlot(get_image(pred_list$pred8, index))
+  output$view9 <- renderPlot(get_image(pred_list$pred9, index))
+  
+    
+    # if ("pred0" %in% reactiveValuesToList(input$playground_1)) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred0, 2))
+    # }
+    # } else if ("pred1" %in% reactive(input$playground_1)) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred1, index))
+    # } else if ("pred2" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred2, index))
+    # } else if ("pred3" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred3, index))
+    # } else if ("pred4" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred4, index))
+    # } else if ("pred5" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred5, index))
+    # } else if ("pred6" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred6, index))
+    # } else if ("pred7" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred7, index))
+    # } else if ("pred8" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred8, index))
+    # } else if ("pred9" %in% in_playground()) {
+    #   output$see_this <- renderPlot(get_image(pred_list$pred9, index))
+    # } else {
+    #   print("ugh")
+    # }
+  
 }
