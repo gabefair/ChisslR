@@ -6,7 +6,7 @@ load_newsgroups_data <- function(){
   download_newsgroups_byDate()
   removeModal()
   
-  showModal(modalDialog("Extracting dataset", footer=NULL))
+  showModal(modalDialog("Extracting dataset (This will take about 10 minutes)", footer=NULL))
   extract_newsgroups_byDate()
   removeModal()
   

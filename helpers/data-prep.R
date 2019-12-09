@@ -36,6 +36,7 @@ train_newsgroups_model <- function() {
   training_folder <- "data/20news-bydate/20news-bydate-train/"
   
   if (!dir.exists("data/feathers/newsgroups")){
+    dir.create("data/feathers/newsgroups")
     
     raw_text_feather_path <- "data/feathers/newsgroups/raw_text.feather"
     
@@ -54,11 +55,13 @@ train_newsgroups_model <- function() {
         transmute(newsgroup = basename(folder), id, text)
       
       write_feather(raw_text, raw_text_feather_path)
-      print("Wrote feather: " + raw_text_feather_path)
+      
+      print(paste0("Wrote feather: " + raw_text_feather_path))
+      
     }
     else {
       raw_text <- read_feather(raw_text_feather_path)
-      print("Read feather: " + raw_text_feather_path)
+      print(paste0("Read feather: " + raw_text_feather_path))
     }
     
     usenet_words_feather_path <- "data/feathers/newsgroups/usenet_words.feather"
@@ -82,11 +85,13 @@ train_newsgroups_model <- function() {
                !word %in% stop_words$word)
       
       write_feather(usenet_words, usenet_words_feather_path)
-      print("Wrote feather: " + usenet_words_feather_path)
+      print(paste0("Wrote feather: " + usenet_words_feather_path))
+      
     }
     else {
       usenet_words <- read_feather(usenet_words_feather_path)
-      print("Read feather: " + usenet_words_feather_path)
+      print(paste0("Read feather: " + usenet_words_feather_path))
+      
     }
     
     print('Cleaning text done')
@@ -162,25 +167,25 @@ train_newsgroups_model <- function() {
     
   }else {
     tf_idf <- read_feather("data/feathers/newsgroups/tf_idf.feather")
-    print("Read feather: " + "data/feathers/newsgroups/tf_idf.feather")
+    print("Read feather: data/feathers/newsgroups/tf_idf.feather")
     
     word_sci_newsgroups <- read_feather("data/feathers/newsgroups/word_sci_newsgroups.feather")
-    print("Read feather: " + "data/feathers/newsgroups/word_sci_newsgroups.feather")
+    print("Read feather: data/feathers/newsgroups/word_sci_newsgroups.feather")
     
     sci_dtm <- read_feather("data/feathers/newsgroups/sci_dtm.feather")
-    print("Read feather: " + "data/feathers/newsgroups/sci_dtm.feather")
+    print("Read feather: data/feathers/newsgroups/sci_dtm.feather")
     
     sci_lda <- read_feather("data/feathers/newsgroups/sci_lda.feather")
-    print("Read feather: " + "data/feathers/newsgroups/sci_lda.feather")
+    print("Read feather: data/feathers/newsgroups/sci_lda.feather")
     
     newsgroup_sentiments <- read_feather("data/feathers/newsgroups/newsgroup_sentiments.feather")
-    print("Read feather: " + "data/feathers/newsgroups/newsgroup_sentiments.feather")
+    print("Read feather: data/feathers/newsgroups/newsgroup_sentiments.feather")
     
     contributions <- read_feather("data/feathers/newsgroups/contributions.feather")
-    print("Read feather: " + "data/feathers/newsgroups/contributions.feather")
+    print("Read feather: data/feathers/newsgroups/contributions.feather")
     
     top_sentiment_words <- read_feather("data/feathers/newsgroups/top_sentiment_words.feather")
-    print("Read feather: " + "data/feathers/newsgroups/top_sentiment_words.feather")
+    print("Read feather: data/feathers/newsgroups/top_sentiment_words.feather")
   }
   
   print('got senitments')
