@@ -5,6 +5,9 @@ date: "12/9/2019"
 output: html_document
 ---
 
+Data taken from: http://qwone.com/~jason/20Newsgroups/
+Case study from: https://www.tidytextmining.com/usenet.html
+
 ```{r}
 library(dplyr)
 library(tidyr)
