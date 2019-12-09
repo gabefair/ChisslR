@@ -102,4 +102,14 @@ function(input, output) {
       theme(plot.title = element_text(hjust = 0.5))
   })
   
+  observe({ 
+    localserver <<- "http://localhost:3000/"
+  })
+  
+  output$react <- renderUI({
+    input$Member
+    chisslr <- tags$iframe(src=localserver, height=800, width=1200)
+    chisslr
+  })
+  
 }

@@ -28,6 +28,9 @@ fluidPage(
                      tabPanel("Topic Model", plotOutput("sci_topic_model")),
                      tabPanel("Misclassifications", plotOutput("sci_misclassifications"))
          )
+        ),
+        tabPanel("UI",
+                 htmlOutput("react")
         )
       )
     )
