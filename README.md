@@ -11,7 +11,7 @@ Dustin's chissl [powerpoint](https://github.com/gabefair/Rhissl/raw/master/Lookb
 # Goal 
 Provide interactive learning during model training of unlabelled data to improve training of the model. See the left red arrow in the below image.
 
-![Interactive learning image](Lookbook/Fourth.PNG)
+![Interactive learning image](Lookbook/Main_Interaction.PNG)
 
 
 ## Python Requirements
