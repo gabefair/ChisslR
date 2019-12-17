@@ -1,4 +1,4 @@
-# ChisslR
+# chisslR
 A R port of [pnnl's chissl](https://github.com/pnnl/chissl)
 
 Paper about [chissl](https://dl.acm.org/citation.cfm?id=3302280)
