@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "npm-run-all": "^4.0.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "3.3.0"
   },
   "dependencies": {
     "node-gyp": "^6.0.1",
